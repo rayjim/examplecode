@@ -139,3 +139,21 @@ print z.value
 val_ls_cvx = np.max(np.abs(log(A*matrix(z.value))))
 print val_ls_cvx
 
+
+############################################################333
+########################################################################################
+#solution 1
+#average
+p1=np.logspace(-3,0)   
+f_0 = [np.max(np.abs(np.log(A*np.matrix((ones((m,1))*p1[ii]))))) for ii in range(p1.size)]
+print min(f_0)
+print p1[argmin(f_0)]
+
+########################################################################################       
+#solution 2 
+# Least square
+p2 = np.linalg.lstsq(A,b)[0]
+p2[np.where(p2>1)[0]]=1
+p2[np.where(p2<0)[0]]=0
+print p2
+
